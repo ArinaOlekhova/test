@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+</head>
+
+<body>
+    <div>
+        Заметка: <input type="text" id="todo" value="" />
+        <input type="button" id="add" value="Добавить" />
+    </div>
+    <ol id="todoView"></ol>
+
+    <script>
+        var todos = [];
+        var todo = document.getElementById('todo');
+        var todoView = document.getElementById('todoView');
+
+        document.getElementById('add').addEventListener('click', function () {
+            if (todos.filter(t => t.title === todo.value).length > 0) {
+                alert('Такой todo уже есть');
+            } else if (todo.value.length === 0) {
+                alert('Название не может быть пустым');
+            } else {
+                var id = todos.length + 1;
+                todos.push({ id, title: todo.value, complete: false })
+                var li = document.createElement('li');
+                var span = document.createElement('span');
+                span.innerText = todo.value;
+                span.dataset.todo = id;
+                var checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.todo = id;
+                checkbox.addEventListener('change', function (e) {
+                    var todo = todos.forEach(t => {
+                        if (t.id === e.target.todo) {
+                            var span = document.querySelector(`span[data-todo='${e.target.todo}']`);
+                            t.complete = !t.complete;
+                            span && t.complete ? span.style.textDecoration = 'line-through' : span.style.textDecoration = 'none';
+                        }
+                    })
+                })
+                li.appendChild(checkbox);
+                li.appendChild(span);
+                todoView.appendChild(li);
+                todo.value = '';
+            }
+        })
+    </script>
+
+</body>
+</html>

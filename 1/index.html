@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Test</title>
+</head>
+
+<body>
+    <!--<div id="drop">
+        <input type="file" onchange="upload(this.files[0])">
+    </div>-->
+
+    <h4>Тест</h4>
+    <form name="myForm" onsubmit="return validate_form();">
+        <p>JavaScript и Java это одно и тоже?</p>
+        <input type="radio" name="r1" value='0' id="quest1" ><label>Да</label><br />
+        <input type="radio" name="r1" value='1' id="quest1"><label>Нет</label>
+
+        <p>Какой правильный способ для комментарии в JavaScript?</p>
+        <input type="checkbox" name="q2" value='1' id="quest2"><label>// Это комментарий.</label><br />
+        <input type="checkbox" name="q2" value='0' id="quest2"><label>'Это комментарий.'</label><br />
+        <input type="checkbox" name="q2" value='1' id="quest2"><label>/* Это комментарий*/</label><br />
+
+        <p><input type="submit" id="calculate" value="Узнать результат"></p>
+        <p>Вы набрали баллов:</p> <input type="text" name="result" readonly>
+    </form>
+
+
+    <script src="app2.js"></script>
+</body>
+
+</html>
